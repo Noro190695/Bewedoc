@@ -1,0 +1,20 @@
+{
+    "name": "nordil/mvc",
+    "autoload": {
+        "psr-4": {
+            "app\\": "app",
+            "core\\": "core"
+        }
+    },
+    "authors": [
+        {
+            "name": "Noro190695",
+            "email": "norojan56@mail.ru"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.5",
+        "twig/twig": "^3.0",
+        "symfony/asset": "^5.3"
+    }
+}
