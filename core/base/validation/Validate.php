@@ -9,7 +9,7 @@ class Validate {
      * данны про ошибки
      * @var array
      */
-    private static $errors = [];
+    private static $errors = '';
 
     /**
      * возврашает конечне значения
@@ -17,6 +17,7 @@ class Validate {
      * @return array|bool
      */
     public static function check($data = []){
+        dump(self::$errors);
        return self::validation($data);
     }
 
@@ -45,13 +46,16 @@ class Validate {
                         case 'max':
                             self::max($key, $v);
                             break;
+                        case 'compare':
+                            self::compare($key, $v);
+                            break;
 
                     }
                 }
             }
 
         }
-        if (empty(self::$errors)) return true;
+        if (self::$errors === '') return true;
         return self::$errors;
 
     }
@@ -62,7 +66,7 @@ class Validate {
      */
     private static function email($email){
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            self::$errors[] = "not a valid email: <strong>$email</strong>";
+            self::$errors = "not a valid email: $email";
         }
     }
     /**
@@ -71,7 +75,7 @@ class Validate {
      */
     public static function required($data){
         if (empty($data)){
-            self::$errors[] = 'fields are required';
+            self::$errors = 'fields are required';
         }
     }
     /**
@@ -82,7 +86,7 @@ class Validate {
      */
     public static function min($key, $val){
         if (strlen($key)  < $val ){
-            self::$errors[] = "fields must be: <strong>$key</strong> > 3 characters";
+            self::$errors = "fields must be: $key > 3 characters";
         }
     }
     /**
@@ -93,7 +97,12 @@ class Validate {
      */
     public static function max($key, $val){
         if (strlen($key) > $val){
-            self::$errors[] = "fields must be: <strong>$key</strong> < 3 characters";
+            self::$errors = "fields must be: $key < 3 characters";
+        }
+    }
+    public static function compare($p1, $p2){
+        if ($p1 !== $p2){
+            self::$errors = "the data does not match $p1 !== $p2";
         }
     }
 

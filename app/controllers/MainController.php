@@ -7,8 +7,8 @@ namespace app\controllers;
 use core\base\views\Views;
 use core\base\validation\Validate;
 
-class Main {
-    private $name = 'ND';
+class MainController {
+
     public function indexAction() {
         $res = Validate::check([
             'Noro' => [
@@ -20,6 +20,6 @@ class Main {
 
         ]);
 
-        Views::render('index.twig', ['name' => $this->name]);
+        Views::render('index.twig', ['name' => NAME]);
     }
 }

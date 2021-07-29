@@ -1,7 +1,7 @@
 <?php
-namespace core\base\ND;
+namespace core\base\bewedoc;
 
-class ND {
+class Bewedoc {
     /**
      * @return void
      */

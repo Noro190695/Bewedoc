@@ -1,6 +1,6 @@
 <?php
-define('ROOT', dirname(__DIR__));
-
+define('ROOT', dirname(dirname(__DIR__)));
+const NAME = 'Bewedoc';
 const DEBUG = true;
 
 
@@ -14,6 +14,6 @@ const DB_INFO = [
     'host' => 'localhost',
     'user' => 'nordil',
     'password' => '190695',
-    'db_name' => 'chat'
+    'db_name' => 'messanger'
 ];
 

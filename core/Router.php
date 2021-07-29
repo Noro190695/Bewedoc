@@ -98,7 +98,7 @@ class Router {
      */
     private static function dispatch($url) {
         if (self::matchRoute($url)){
-            $controller = 'app\controllers\\' . self::upperCamelCase(self::$route['controller']);
+            $controller = 'app\controllers\\' . self::upperCamelCase(self::$route['controller']).'Controller';
             if (class_exists($controller)){
                 $classObj = new $controller;
 

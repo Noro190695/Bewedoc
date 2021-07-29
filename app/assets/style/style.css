@@ -19,6 +19,8 @@ header{
     width: 100%;
     height: 50px;
     border-bottom: 1px solid silver;
+    display: flex;
+    justify-content: space-between;
 }
 
 .logo{
@@ -28,7 +30,6 @@ header{
 .logo a{
     font-size: 35px;
     font-family: 'Lobster', cursive;
-
     letter-spacing: 5px;
     color: #00655c;
 }
