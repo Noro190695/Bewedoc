@@ -63,9 +63,18 @@ class Router {
      *@static
      */
     private static function matchRoute($url) {
-        $query_arr = explode('/', $url);
+
+       $get =  preg_match_all("#\?#", $url,$gm);
+       $urlReg = preg_match("#(^\s*?.*\?)#",$url, $matches);
+       if ($get){
+           $urlReg = preg_replace("~(\?)|(=)|(&)|(\d)~", '', $matches[0]);
+           $url = $urlReg;
+       }
+        $query_arr = explode('/',  $url);
+
         if (count($query_arr) < 3){
             foreach (self::$routes as $pattern => $route) {
+
                 if (preg_match("!$pattern!i", $url, $matches)){
                     foreach ($matches as $key => $val){
                         if (is_string($key)){
@@ -107,16 +116,17 @@ class Router {
                 if (method_exists($classObj, $action)){
                     call_user_func_array([$classObj,$action], self::$params);
                 }else{
-                    dump($action);
                     DEBUG ? die('Method Note Exist') : view('404.html');
 
                 }
 
             }else{
+
                 DEBUG ? die('Class Note Exist') : view('404.html');
             }
 
         }else{
+
             http_response_code(404);
             view('404');
 

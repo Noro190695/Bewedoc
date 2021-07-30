@@ -2,7 +2,7 @@
 define('ROOT', dirname(dirname(__DIR__)));
 const NAME = 'Bewedoc';
 const DEBUG = true;
-const PATH = '/';
+const PATH = '';
 
 
 /**
